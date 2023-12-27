@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>棉花田生機園地</title>
+    <style>
+        /* 這裡放你的 CSS 樣式 */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .left {
+            background-color: green;
+            width: 20%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .right {
+            background-color: white;
+            width: 80%;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: black;
+        }
+
+        button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <h1>棉花田生機園地</h1>
+        <h2>作業管理</h2>
+        <a href="/orders"><button>訂單管理</button></a>
+        <a href="/inventory"><button>庫存管理</button></a>
+        <h2>顧客關係管理</h2>
+        <button>銷售分析</button>
+        <a href="/customers"><button>顧客資料</button></a>
+        <a href="/RFM"><button>顧客分析</button></a>
+    </div>
+    <div class="right">
+        <!-- 顧客資料的表格 -->
+        <h1>顧客資料</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>顧客姓名</th>
+                    <th>會員等級</th>
+                    <th>聯繫方式</th>
+                    <th>商品偏好</th>
+                    <th>顧客終身價值</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ customer['customer_name'] }}</td>
+                    <td>{{ customer['membership_level'] }}</td>
+                    <td>{{ customer['contact'] }}</td>
+                    <td>{{ customer['preferences'] }}</td>
+                    <td>{{ customer['lifetime_value'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
